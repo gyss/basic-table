@@ -4,12 +4,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {jsx} from '@emotion/core'
 
-import {fetchWeatherData} from '../actions'
-import weatherReducer from '../reducers/weatherReducer'
+import {fetchWeather} from '../actions'
 
 const WeatherTable = ({dispatch, loading, error, city, list}) => {
   React.useEffect(() => {
-    dispatch(fetchWeatherData())
+    dispatch(fetchWeather())
   }, [])
 
   console.log(loading, error, city, list)
@@ -33,8 +32,8 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
 }
 
 const mapStateToProps = (state) => ({
-  city: state.weather.items,
-  list: state.weather.items,
+  city: state.weather.city,
+  list: state.weather.list,
   loading: state.weather.loading,
   error: state.weather.error,
 })
