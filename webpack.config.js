@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.tsx',
+  entry: './src/index.js',
 
   devtool: 'inline-source-map',
   devServer: {
@@ -16,7 +16,7 @@ module.exports = {
     hot: true,
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json'],
+    extensions: ['.js', '.json'],
   },
   output: {
     filename: '[name].bundle.js',
@@ -48,16 +48,6 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader',
-          },
-        ],
-      },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
         enforce: 'pre',
         test: /\.js$/,
