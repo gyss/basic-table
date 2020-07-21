@@ -1,22 +1,46 @@
 /** @jsx jsx */
 
 import React from 'react'
-
+import {connect} from 'react-redux'
 import {jsx} from '@emotion/core'
 
-export default function WeatherTable() {
+import {fetchWeatherData} from '../actions'
+import weatherReducer from '../reducers/weatherReducer'
+
+const WeatherTable = ({dispatch, loading, error, city, list}) => {
   React.useEffect(() => {
-    fetch('http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=416f21735638892910fc788dbd92dc24')
-      .then((data) => data.json())
-      .then(
-        (data) => {
-          console.log(data)
-        },
-        (e) => {
-          console.error(e)
-        },
-      )
+    dispatch(fetchWeatherData())
   }, [])
 
-  return <div>Hello world</div>
+  console.log(loading, error, city, list)
+
+  if (loading) {
+    return <div>Loading weather data...</div>
+  }
+
+  if (error) {
+    return <div>ERROR!</div>
+  }
+
+  return (
+    <div>
+      <div>
+        <div>City: {city.name}</div>
+        <div>Country: {city.country}</div>
+      </div>
+    </div>
+  )
 }
+
+const mapStateToProps = (state) => ({
+  city: state.weather.items,
+  list: state.weather.items,
+  loading: state.weather.loading,
+  error: state.weather.error,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  // toggleTodo: (id) => dispatch(toggleTodo(id)),
+})
+
+export default connect(mapStateToProps)(WeatherTable)
