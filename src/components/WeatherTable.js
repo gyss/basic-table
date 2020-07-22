@@ -10,22 +10,20 @@ import {defaultTableRowRenderer, AutoSizer, Table, Column} from 'react-virtualiz
 import {fetchWeather} from '../actions'
 
 const container = css`
-  height: 100%;
+  height: 80%;
   width: 100%;
-  overflow: hidden;
 `
 
 const header = css`
   padding: calc(2em + 10px);
   background-color: #fafbfc;
-  margin-bottom: 2em;
   box-shadow: inset 0 -1px 0 #e1e4e8;
 `
 
 const table = css`
   overflow: auto;
-  padding: 0 2em;
   height: 100%;
+  padding: 2em;
 `
 
 /*
@@ -54,6 +52,14 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
     return <div>ERROR!</div>
   }
 
+  function rowClassName({index}) {
+    if (index < 0) {
+      return 'headerRow'
+    } else {
+      return index % 2 === 0 ? 'evenRow' : 'oddRow'
+    }
+  }
+
   return (
     <div css={container}>
       <div css={header}>
@@ -61,7 +67,6 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
           {city.name}, {city.country}
         </h2>
       </div>
-
       <div css={table}>
         <AutoSizer>
           {({height, width}) => (
@@ -71,7 +76,8 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
               headerHeight={40}
               rowHeight={30}
               rowCount={list.length}
-              rowGetter={({index}) => list[index]}>
+              rowGetter={({index}) => list[index]}
+              rowClassName={rowClassName}>
               <Column label="Date" dataKey="dt_txt" width={200} flexGrow={1} />
               <Column width={110} label="Visibility" dataKey="visibility" flexGrow={1} />
               <Column
@@ -155,17 +161,6 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
           )}
         </AutoSizer>
       </div>
-
-      {/*<List className="List" height={300} itemCount={list.length} itemSize={35}>
-        {({index, style}) => {
-          const item = list[index]
-          return (
-            <div className={index % 2 ? 'ListItemOdd' : 'ListItemEven'} style={style}>
-              {item.main.temp}
-            </div>
-          )
-        }}
-      </List>*/}
     </div>
   )
 }

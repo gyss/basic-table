@@ -28,6 +28,13 @@ const globalStyles = css`
     padding: 0;
     margin: 0;
   }
+
+  .evenRow {
+    background-color: #fff;
+  }
+  .oddRow {
+    background-color: #f0efef;
+  }
 `
 
 const AppWrapper = styled.div`
