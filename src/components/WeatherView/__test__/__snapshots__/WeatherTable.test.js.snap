@@ -79,18 +79,6 @@ exports[`<WeatherTable> should render 1`] = `
         <div
           class="ReactVirtualized__Table__headerColumn"
           role="columnheader"
-          style="flex: 1 1 120px;"
-        >
-          <span
-            class="ReactVirtualized__Table__headerTruncatedText"
-            title="Feels like"
-          >
-            Feels like
-          </span>
-        </div>
-        <div
-          class="ReactVirtualized__Table__headerColumn"
-          role="columnheader"
           style="flex: 1 1 140px;"
         >
           <span
@@ -134,6 +122,18 @@ exports[`<WeatherTable> should render 1`] = `
             title="Sea Level"
           >
             Sea Level
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Feels like"
+          >
+            Feels like
           </span>
         </div>
         <div

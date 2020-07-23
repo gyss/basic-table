@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import {css, jsx} from '@emotion/core'
 import {AutoSizer, Table, Column} from 'react-virtualized'
 
+import {kelvinToCelsius} from '../../utils/conversions'
+
 function rowClassName({index}) {
   if (index < 0) {
     return 'headerRow'
@@ -26,7 +28,13 @@ const WeatherTable = ({onSelect, weather}) => {
           rowGetter={({index}) => weather.list[index]}
           rowClassName={rowClassName}
           onRowClick={onSelect}>
-          <Column label="Date" dataKey="dt_txt" width={200} flexGrow={1} />
+          <Column
+            label="Date"
+            dataKey="dt_txt"
+            width={200}
+            cellDataGetter={({rowData}) => rowData.dt_txt.substr(0, 16)}
+            flexGrow={1}
+          />
           <Column width={110} label="Visibility" dataKey="visibility" flexGrow={1} />
           <Column
             width={100}
@@ -50,13 +58,6 @@ const WeatherTable = ({onSelect, weather}) => {
             flexGrow={1}
           />
           <Column
-            width={120}
-            label="Feels like"
-            dataKey="feels_like"
-            cellDataGetter={({rowData}) => rowData.main.feels_like}
-            flexGrow={1}
-          />
-          <Column
             width={140}
             label="Grnd Level"
             dataKey="grnd_level"
@@ -67,7 +68,7 @@ const WeatherTable = ({onSelect, weather}) => {
             width={120}
             label="Humidity"
             dataKey="humidity"
-            cellDataGetter={({rowData}) => rowData.main.humidity}
+            cellDataGetter={({rowData}) => rowData.main.humidity + ' %'}
             flexGrow={1}
           />
           <Column
@@ -86,23 +87,30 @@ const WeatherTable = ({onSelect, weather}) => {
           />
           <Column
             width={120}
+            label="Feels like"
+            dataKey="feels_like"
+            cellDataGetter={({rowData}) => kelvinToCelsius(rowData.main.feels_like)}
+            flexGrow={1}
+          />
+          <Column
+            width={120}
             label="Temp"
             dataKey="temp"
-            cellDataGetter={({rowData}) => rowData.main.temp}
+            cellDataGetter={({rowData}) => kelvinToCelsius(rowData.main.temp)}
             flexGrow={1}
           />
           <Column
             width={120}
             label="Temp min"
             dataKey="temp_min"
-            cellDataGetter={({rowData}) => rowData.main.temp_min}
+            cellDataGetter={({rowData}) => kelvinToCelsius(rowData.main.temp_min)}
             flexGrow={1}
           />
           <Column
             width={120}
             label="Temp max"
             dataKey="temp_max"
-            cellDataGetter={({rowData}) => rowData.main.temp_max}
+            cellDataGetter={({rowData}) => kelvinToCelsius(rowData.main.temp_max)}
             flexGrow={1}
           />
         </Table>

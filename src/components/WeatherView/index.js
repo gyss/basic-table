@@ -109,7 +109,7 @@ const WeatherView = ({dispatch, weather}) => {
       </div>
       {selected && (
         <div css={subheader}>
-          {selected.dt_txt} <Button onClick={clearSelectedItem}>Return</Button>
+          {selected.dt_txt.substr(0, 16)} <Button onClick={clearSelectedItem}>Return</Button>
         </div>
       )}
       <div css={table}>
