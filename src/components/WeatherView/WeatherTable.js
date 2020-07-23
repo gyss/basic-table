@@ -12,7 +12,7 @@ function rowClassName({index}) {
   }
 }
 
-const WeatherTable = ({onSelect, weather: {error, city, list, selected}}) => {
+const WeatherTable = ({onSelect, weather}) => {
   return (
     <AutoSizer>
       {({height, width}) => (
@@ -21,8 +21,8 @@ const WeatherTable = ({onSelect, weather: {error, city, list, selected}}) => {
           height={height}
           headerHeight={40}
           rowHeight={30}
-          rowCount={list.length}
-          rowGetter={({index}) => list[index]}
+          rowCount={weather.list.length}
+          rowGetter={({index}) => weather.list[index]}
           rowClassName={rowClassName}
           onRowClick={onSelect}>
           <Column label="Date" dataKey="dt_txt" width={200} flexGrow={1} />

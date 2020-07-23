@@ -1,4 +1,9 @@
-import {FETCH_WEATHER_BEGIN, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_FAILURE, SELECT_WEATHER_ITEM} from '../actions'
+import {
+  FETCH_WEATHER_BEGIN,
+  FETCH_WEATHER_SUCCESS,
+  FETCH_WEATHER_FAILURE,
+  SELECT_WEATHER_ITEM,
+} from '../actions/weather'
 
 const initialState = {
   city: {},
