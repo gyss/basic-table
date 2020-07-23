@@ -25,6 +25,14 @@ const table = css`
   padding: 2em;
 `
 
+const loadingStyles = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const WeatherView = ({dispatch, weather}) => {
   const {loading, city, selected, error} = weather
 
@@ -33,7 +41,7 @@ const WeatherView = ({dispatch, weather}) => {
   }, [])
 
   if (loading) {
-    return <div>Loading weather data...</div>
+    return <div css={loadingStyles}>Loading weather data...</div>
   }
 
   if (error) {
