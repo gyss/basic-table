@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {css, jsx} from '@emotion/core'
 import styled from '@emotion/styled'
 
-import {fetchWeather, selectWeatherItem} from '../..//actions/weather'
+import {fetchWeather, selectWeatherItem} from '../../actions/weather'
 import WeatherTable from './WeatherTable'
 import WeatherItemTable from './WeatherItemTable'
 

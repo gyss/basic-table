@@ -5,7 +5,7 @@ import {
   SELECT_WEATHER_ITEM,
 } from '../actions/weather'
 
-const initialState = {
+export const initialState = {
   city: {},
   list: [],
   loading: false,
