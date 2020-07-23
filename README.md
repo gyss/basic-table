@@ -24,7 +24,7 @@ $ npm i
 
 ### Required
 
-- [x] Create a rest API call using this http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=416f21735638892910fc788dbd92dc24
+- [x] Create a rest API call using this http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=${APP_ID}
 - [x] Create and populate table with the ‘main’ object from the rest API response (make sure to use redux)
 - [x] Convert data into more readable format eg, convert temp into degrees,
 - [x] Have some error handling in place when no data is returned from API
