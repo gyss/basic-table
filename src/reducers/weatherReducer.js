@@ -29,7 +29,7 @@ export default function weatherReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
+        error: action.payload,
         city: {},
         list: [],
       }

@@ -31,6 +31,15 @@ const loadingStyles = css`
   display: flex;
   align-items: center;
   justify-content: center;
+  span {
+    display: inline-block;
+    max-width: 500px;
+  }
+`
+
+const errorStyles = css`
+  ${loadingStyles}
+  color: red;
 `
 
 const WeatherView = ({dispatch, weather}) => {
@@ -41,11 +50,19 @@ const WeatherView = ({dispatch, weather}) => {
   }, [])
 
   if (loading) {
-    return <div css={loadingStyles}>Loading weather data...</div>
+    return (
+      <div css={loadingStyles}>
+        <span>Loading weather data...</span>
+      </div>
+    )
   }
 
   if (error) {
-    return <div>ERROR!</div>
+    return (
+      <div css={errorStyles}>
+        <span>{error}</span>
+      </div>
+    )
   }
 
   function handleSelectItem(event) {
@@ -65,7 +82,7 @@ const WeatherView = ({dispatch, weather}) => {
       </div>
       <div css={table}>
         {selected ? (
-          <WeatherItemTable onReturn={clearSelectedItem} weatherItem={selected} />
+          <WeatherItemTable item={selected} />
         ) : (
           <WeatherTable onSelect={handleSelectItem} weather={weather} />
         )}
