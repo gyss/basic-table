@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {css, jsx} from '@emotion/core'
 import {AutoSizer, Table, Column} from 'react-virtualized'
 
@@ -108,6 +109,43 @@ const WeatherTable = ({onSelect, weather}) => {
       )}
     </AutoSizer>
   )
+}
+
+WeatherTable.propTypes = {
+  onSelect: PropTypes.func,
+  weather: PropTypes.shape({
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        clouds: PropTypes.shape({all: PropTypes.number}),
+        dt: PropTypes.number,
+        dt_txt: PropTypes.string,
+        visibility: PropTypes.number,
+        weather: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            main: PropTypes.string,
+            description: PropTypes.string,
+            icon: PropTypes.string,
+          }),
+        ),
+        wind: PropTypes.shape({
+          speed: PropTypes.number,
+          deg: PropTypes.number,
+        }),
+        main: PropTypes.shape({
+          feels_like: PropTypes.number,
+          grnd_level: PropTypes.number,
+          humidity: PropTypes.number,
+          pressure: PropTypes.number,
+          sea_level: PropTypes.number,
+          temp: PropTypes.number,
+          temp_kf: PropTypes.number,
+          temp_max: PropTypes.number,
+          temp_min: PropTypes.number,
+        }).isRequired,
+      }),
+    ),
+  }).isRequired,
 }
 
 export default WeatherTable
