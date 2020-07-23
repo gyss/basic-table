@@ -3,6 +3,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {css, jsx} from '@emotion/core'
+import styled from '@emotion/styled'
 
 import {fetchWeather, selectWeatherItem} from '../../actions'
 import WeatherTable from './WeatherTable'
@@ -16,6 +17,11 @@ const container = css`
 const header = css`
   padding: calc(2em + 10px);
   background-color: #fafbfc;
+  box-shadow: inset 0 -1px 0 #e1e4e8;
+`
+
+const subheader = css`
+  padding: 1em 2em;
   box-shadow: inset 0 -1px 0 #e1e4e8;
 `
 
@@ -40,6 +46,27 @@ const loadingStyles = css`
 const errorStyles = css`
   ${loadingStyles}
   color: red;
+`
+
+const Button = styled.a`
+  display: inline-block;
+  text-align: center;
+
+  min-width: 70px;
+  padding: 0.5em 1.125em;
+  margin-left: 2em;
+
+  background-color: #0087ff;
+  border-color: #0060ff;
+  color: #fff;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: #0060ff;
+  }
 `
 
 const WeatherView = ({dispatch, weather}) => {
@@ -80,6 +107,11 @@ const WeatherView = ({dispatch, weather}) => {
           {city.name}, {city.country}
         </h2>
       </div>
+      {selected && (
+        <div css={subheader}>
+          {selected.dt_txt} <Button onClick={clearSelectedItem}>Return</Button>
+        </div>
+      )}
       <div css={table}>
         {selected ? (
           <WeatherItemTable item={selected} />
