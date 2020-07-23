@@ -15,9 +15,9 @@ export const fetchWeatherSuccess = (data) => ({
   payload: data,
 })
 
-export const fetchWeatherFailure = (error) => ({
+export const fetchWeatherFailure = (errorMessage) => ({
   type: FETCH_WEATHER_FAILURE,
-  payload: error,
+  payload: errorMessage,
 })
 
 export const selectWeatherItem = (item) => ({
@@ -33,10 +33,13 @@ export const fetchWeather = () => {
         `http://api.openweathermap.org/data/2.5/forecast?id=${OPEN_WEATHER_ID}&appid=${OPEN_WEATHER_APP_ID}`,
       )
       const data = await response.json()
+      if (data.cod && data.cod !== 200) {
+        return dispatch(fetchWeatherFailure(data.message))
+      }
       dispatch(fetchWeatherSuccess(data))
     } catch (err) {
       console.error(err)
-      dispatch(fetchWeatherFailure(err))
+      dispatch(fetchWeatherFailure('Error fetching weather data. Please try again later'))
     }
   }
 }
