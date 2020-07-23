@@ -1,10 +1,11 @@
-import {FETCH_WEATHER_BEGIN, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_FAILURE} from '../actions'
+import {FETCH_WEATHER_BEGIN, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_FAILURE, SELECT_WEATHER_ITEM} from '../actions'
 
 const initialState = {
   city: {},
   list: [],
   loading: false,
   error: null,
+  selected: null,
 }
 
 export default function weatherReducer(state = initialState, action) {
@@ -31,6 +32,12 @@ export default function weatherReducer(state = initialState, action) {
         error: action.payload.error,
         city: {},
         list: [],
+      }
+
+    case SELECT_WEATHER_ITEM:
+      return {
+        ...state,
+        selected: action.payload,
       }
 
     default:

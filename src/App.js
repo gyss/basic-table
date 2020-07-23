@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import {css, Global, jsx} from '@emotion/core'
 
 import ErrorBoundary from './components/ErrorBoundary'
-const WeatherTable = React.lazy(() => import('./components/WeatherTable'))
+const WeatherView = React.lazy(() => import('./components/WeatherView'))
 
 const globalStyles = css`
   html,
@@ -50,7 +50,7 @@ export default function App() {
       <React.Suspense fallback={<div>Loading...</div>}>
         <Global styles={globalStyles} />
         <AppWrapper>
-          <WeatherTable />
+          <WeatherView />
         </AppWrapper>
       </React.Suspense>
     </ErrorBoundary>

@@ -4,10 +4,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {css, jsx} from '@emotion/core'
 
-import {SortableContainer, SortableElement} from 'react-sortable-hoc'
-import {defaultTableRowRenderer, AutoSizer, Table, Column} from 'react-virtualized'
+import {AutoSizer, Table, Column} from 'react-virtualized'
 
-import {fetchWeather} from '../actions'
+import {fetchWeather, selectWeatherItem} from '../actions'
 
 const container = css`
   height: 80%;
@@ -26,20 +25,15 @@ const table = css`
   padding: 2em;
 `
 
-/*
-const SortableTable = SortableContainer(Table)
-const SortableTableRowRenderer = SortableElement(defaultTableRowRenderer)
-
-function rowRenderer(props) {
-  return <SortableTableRowRenderer {...props} />
+function rowClassName({index}) {
+  if (index < 0) {
+    return 'headerRow'
+  } else {
+    return index % 2 === 0 ? 'evenRow' : 'oddRow'
+  }
 }
 
-function CustomizedTable(props) {
-  return <SortableTable rowRenderer={rowRenderer} {...props} />
-}
-*/
-
-const WeatherTable = ({dispatch, loading, error, city, list}) => {
+const WeatherTable = ({dispatch, loading, error, city, list, selected}) => {
   React.useEffect(() => {
     dispatch(fetchWeather())
   }, [])
@@ -52,12 +46,8 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
     return <div>ERROR!</div>
   }
 
-  function rowClassName({index}) {
-    if (index < 0) {
-      return 'headerRow'
-    } else {
-      return index % 2 === 0 ? 'evenRow' : 'oddRow'
-    }
+  function handleRowClick(event) {
+    dispatch(selectWeatherItem(event.rowData))
   }
 
   return (
@@ -77,7 +67,8 @@ const WeatherTable = ({dispatch, loading, error, city, list}) => {
               rowHeight={30}
               rowCount={list.length}
               rowGetter={({index}) => list[index]}
-              rowClassName={rowClassName}>
+              rowClassName={rowClassName}
+              onRowClick={handleRowClick}>
               <Column label="Date" dataKey="dt_txt" width={200} flexGrow={1} />
               <Column width={110} label="Visibility" dataKey="visibility" flexGrow={1} />
               <Column
@@ -170,10 +161,7 @@ const mapStateToProps = (state) => ({
   list: state.weather.list,
   loading: state.weather.loading,
   error: state.weather.error,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  // toggleTodo: (id) => dispatch(toggleTodo(id)),
+  selected: state.weather.selected,
 })
 
 export default connect(mapStateToProps)(WeatherTable)
