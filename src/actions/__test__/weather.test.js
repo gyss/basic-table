@@ -4,7 +4,7 @@ import fetchMock from 'fetch-mock'
 
 import * as actions from '../weather'
 import weatherFixture from '../../fixtures/weatherFixture'
-import {initialState} from '../../reducers/weatherReducer'
+import {initialState} from '../../reducers/weather'
 
 const mockStore = configureMockStore([thunk])
 
