@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WeatherTable> should render 1`] = `
+<DocumentFragment>
+  <div
+    style="overflow: visible; height: 0px; width: 0px;"
+  >
+    <div
+      aria-colcount="13"
+      aria-rowcount="40"
+      class="ReactVirtualized__Table"
+      role="grid"
+    >
+      <div
+        class="ReactVirtualized__Table__headerRow headerRow"
+        role="row"
+        style="height: 40px; overflow: hidden; padding-right: 0px; width: 1570px;"
+      >
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 200px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Date"
+          >
+            Date
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 110px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Visibility"
+          >
+            Visibility
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 100px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Wind"
+          >
+            Wind
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 100px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Clouds"
+          >
+            Clouds
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 100px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Rain"
+          >
+            Rain
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Feels like"
+          >
+            Feels like
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 140px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Grnd Level"
+          >
+            Grnd Level
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Humidity"
+          >
+            Humidity
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Pressure"
+          >
+            Pressure
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Sea Level"
+          >
+            Sea Level
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Temp"
+          >
+            Temp
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Temp min"
+          >
+            Temp min
+          </span>
+        </div>
+        <div
+          class="ReactVirtualized__Table__headerColumn"
+          role="columnheader"
+          style="flex: 1 1 120px;"
+        >
+          <span
+            class="ReactVirtualized__Table__headerTruncatedText"
+            title="Temp max"
+          >
+            Temp max
+          </span>
+        </div>
+      </div>
+      <div
+        aria-label="grid"
+        class="ReactVirtualized__Grid ReactVirtualized__Table__Grid"
+        role="rowgroup"
+        style="box-sizing: border-box; direction: ltr; height: -40px; position: relative; width: 1570px; will-change: transform; overflow-x: hidden; overflow-y: auto;"
+        tabindex="0"
+      />
+    </div>
+  </div>
+  <div
+    class="resize-triggers"
+  >
+    <div
+      class="expand-trigger"
+    >
+      <div
+        style="width: 1px; height: 1px;"
+      />
+    </div>
+    <div
+      class="contract-trigger"
+    />
+  </div>
+</DocumentFragment>
+`;

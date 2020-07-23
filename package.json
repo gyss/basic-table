@@ -20,8 +20,9 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "@testing-library/jest-dom": "^5.11.0",
-    "@testing-library/react": "^10.4.4",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
+    "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
@@ -30,6 +31,7 @@
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.1.0",
     "jest-dom": "^4.0.0",
+    "react-test-renderer": "^16.13.1",
     "source-map-loader": "^1.0.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
@@ -48,5 +50,39 @@
     "react-virtualized": "^9.21.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/src/**/*.test.+(js)"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "cobertura"
+    ],
+    "coverageDirectory": "<rootDir>/jest",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
